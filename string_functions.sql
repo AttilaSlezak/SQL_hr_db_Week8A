@@ -1,0 +1,21 @@
+USE hr_db;
+
+SELECT EMPLOYEE_ID, SUBSTR(EMAIL, 1, LENGTH(EMAIL)-3) as 'email id' FROM employees;
+
+SELECT EMPLOYEE_ID, REVERSE(SUBSTR(REVERSE(EMAIL), 4)) as 'email id' FROM employees;
+
+SELECT * FROM locations
+WHERE LENGTH(STREET_ADDRESS) =
+
+(SELECT MIN(LENGTH(STREET_ADDRESS)) FROM locations);
+
+SELECT FIRST_NAME as 'First name', LENGTH(FIRST_NAME) as 'Length of first name' FROM employees
+
+WHERE FIRST_NAME LIKE 'A%' OR FIRST_NAME LIKE 'J%' OR FIRST_NAME LIKE 'M%'
+
+ORDER BY FIRST_NAME;
+
+SELECT FIRST_NAME AS 'First name', LENGTH(FIRST_NAME) AS 'Length of first name' 
+FROM employees 
+
+WHERE SUBSTRING(FIRST_NAME,1,1) in ('A', 'J', 'M') ORDER BY 'First name';
